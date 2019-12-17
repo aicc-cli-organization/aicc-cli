@@ -86,7 +86,7 @@
 </script>
 
 <style lang="scss" scoped>
-@import "src/styles/mixin.scss";
+@import "~src/styles/mixin.scss";
 .list-wrap {
   flex: 1;
   overflow: hidden;

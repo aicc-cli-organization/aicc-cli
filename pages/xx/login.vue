@@ -1,26 +1,15 @@
 <template>
-  <section class="container">
-    <myCustomer />
-  </section>
+  <login></login>
 </template>
 
 <script>
-import Logo from '@@/components/Logo.vue'
-import myCustomer from '../crm/src/views/customer/PrivateSea/index.vue'
-import '../crm/src/main.js'
-import Vue from 'vue'
-console.log('pages index')
+import login from '../../crm/src/views/login'
 
 export default {
   components: {
-    Logo,
-    myCustomer
+    login
   },
   mounted() {
-    console.log('outter this')
-    console.log(this)
-    console.log(this.$store)
-    console.log(Vue)
   }
 }
 </script>

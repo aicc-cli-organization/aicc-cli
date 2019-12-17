@@ -22,7 +22,7 @@ export default {
 }
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
-  @import 'src/styles/variables.scss';
+  @import '~src/styles/variables.scss';
   .app-main {
     height: calc(100vh - 56px);
     min-width: 1195px;

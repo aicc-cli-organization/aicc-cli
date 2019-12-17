@@ -3,7 +3,7 @@ const nodeExternals = require('webpack-node-externals')
 const webpack = require('webpack')
 const path = require('path')
 
-function resolve (dir) {
+function resolve(dir) {
   return path.join(__dirname, '.', dir)
 }
 
@@ -22,7 +22,6 @@ module.exports = {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
-
   /*
   ** Customize the progress-bar color
   */
@@ -43,13 +42,50 @@ module.exports = {
   */
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy'
   ],
   /*
   ** Axios module configuration
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+    proxy: true
+  },
+
+  proxy: {
+    '/ai-call-platform-back': {
+      target: 'https://crm.yiwise.com',
+      secure: false
+    },
+    '/apiEngine': {
+      target: 'https://crm.yiwise.com',
+      secure: false,
+      pathRewrite: {
+        '^/apiEngine': '/apiEngine'
+      }
+    },
+    '/apiEngine/webSocket': {
+      target: 'https://crm.yiwise.com',
+      secure: false,
+      ws: true
+    },
+    '/apiDialogFlow/dialogFlow': {
+      target: 'https://crm.yiwise.com',
+      secure: false
+    },
+    '/apiPlatform': {
+      target: 'https://crm.yiwise.com',
+      secure: false
+    },
+    '/apiIvrNavigation': {
+      target: 'https://crm.yiwise.com',
+      secure: false
+    },
+    '/apiDialogFlow/shareKnowledge': {
+      target: 'https://crm.yiwise.com',
+      secure: false
+    }
   },
 
   /*
@@ -129,7 +165,6 @@ module.exports = {
         //     /^underscore/
         //   ] })
         // ]
-
         // config.plugins.push(
         //   new webpack.DllReferencePlugin({
         //     context: path.resolve('./crm/build'),
@@ -138,7 +173,6 @@ module.exports = {
         // )
       }
 
-      
       // console.log(config)
     }
   }

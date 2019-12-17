@@ -370,7 +370,7 @@ export default {
   }
 </style>
 <style lang="scss" scoped>
-@import "src/styles/mixin.scss";
+@import "~src/styles/mixin.scss";
 $color-border: #D8D8D8;
 /deep/ .el-dialog {
   float: right;

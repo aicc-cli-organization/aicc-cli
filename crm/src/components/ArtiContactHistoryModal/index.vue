@@ -372,8 +372,8 @@
 </script>
 
 <style lang="scss" scoped>
-  @import 'src/styles/variables.scss';
-  @import 'src/styles/mixin.scss';
+  @import '~src/styles/variables.scss';
+  @import '~src/styles/mixin.scss';
 
   .contact-history-modal {
     .contact-history {

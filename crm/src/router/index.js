@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Store from '../store'
+// import Store from '../store'
+const Store = window.$nuxt.$store
 import { hasAccess } from '../utils/access'
 
 import { SystemSetting, IdentifyList, KnowledgeShare } from 'yiwise-components'

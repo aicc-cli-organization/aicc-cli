@@ -1,4 +1,5 @@
-import store from '@/store'
+// import store from '@/store'
+const store = window.$nuxt.$store
 import { Message, Notification } from 'element-ui'
 import * as contactAPI from '@/api/contact'
 import JSZip from '@/assets/jszip'

@@ -1,4 +1,5 @@
-import Store from '@/store'
+// import Store from '@/store'
+const Store = window.$nuxt.$store
 const customerStr = Store.getters.customerStr
 
 export const tableHeaders = {

@@ -96,8 +96,8 @@
 </script>
 
 <style lang="scss" scoped>
-  @import 'src/styles/variables.scss';
-  @import 'src/styles/placeholder.scss';
+  @import '~src/styles/variables.scss';
+  @import '~src/styles/placeholder.scss';
   .button-container {
     height: 52px;
     padding: 10px 8px 10px 15px;

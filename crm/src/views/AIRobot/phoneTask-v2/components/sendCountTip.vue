@@ -55,7 +55,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "src/styles/variables.scss";
+@import "~src/styles/variables.scss";
 
 .send-count_tip {
   margin-top: 8px;

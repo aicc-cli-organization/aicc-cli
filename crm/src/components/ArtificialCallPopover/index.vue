@@ -812,7 +812,7 @@ export default {
 </script>
 
 <style lang="scss">
-  @import 'src/styles/variables.scss';
+  @import '~src/styles/variables.scss';
   .call-popover {
     .mask {
       z-index: $--index-top;

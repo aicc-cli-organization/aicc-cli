@@ -114,9 +114,9 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-  @import "src/styles/variables.scss";
-  @import "src/styles/mixin.scss";
-  @import 'src/styles/variables.scss';
+  @import "~src/styles/variables.scss";
+  @import "~src/styles/mixin.scss";
+  @import '~src/styles/variables.scss';
 
   .app-wrapper {
     @include clearfix;

@@ -1,5 +1,7 @@
-import { asyncRouterMap, constantRouterMap } from '@/router'
+// import { asyncRouterMap, constantRouterMap } from '@/router'
 import { hasPermission } from '@/utils/access'
+const asyncRouterMap = []
+const constantRouterMap = []
 
 /**
  * 递归过滤异步路由表，返回符合用户角色权限的路由表

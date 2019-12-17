@@ -380,8 +380,8 @@
 </script>
 
 <style lang="scss" scoped>
-  @import 'src/styles/variables.scss';
-  @import 'src/styles/placeholder.scss';
+  @import '~src/styles/variables.scss';
+  @import '~src/styles/placeholder.scss';
   
   .step-container {
     margin: 15px 0;

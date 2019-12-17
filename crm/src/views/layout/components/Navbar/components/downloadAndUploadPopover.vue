@@ -38,7 +38,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'src/styles/variables.scss';
+@import '~src/styles/variables.scss';
 
 .download-and-upload-popover {
   cursor: pointer;

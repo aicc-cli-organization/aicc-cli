@@ -243,7 +243,7 @@
 </script>
 
 <style lang="scss" scoped>
-@import 'src/styles/extend.scss';
+@import '~src/styles/extend.scss';
   .echarts {
     box-shadow:0px 2px 5px 0px rgba(209,209,209,0.5);
     border:1px solid rgba(238,238,238,1);
