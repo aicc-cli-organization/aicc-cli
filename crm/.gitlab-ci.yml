@@ -1,0 +1,188 @@
+cache:
+  key: ${CI_BUILD_STAGE}
+  paths:
+    - node_modules
+Dev Build:
+  tags:
+    - shared
+  only:
+    - develop@ai-call-platform/ai-call-platform-web
+  image: node:9
+  stage: build
+  script:
+    # - yarn config set registry http://nexus.yiwise.net/repository/yiwise-components-group/
+    # - yarn
+    # - yarn add yiwise-components -S
+    - yarn --registry=http://nexus.yiwise.net/repository/yiwise-components-group/
+    - yarn list
+    - npm run build:sit
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - dist
+
+Local Build:
+  tags:
+    - shared
+  only:
+    - local@ai-call-platform/ai-call-platform-web
+  image: node:9
+  stage: build
+  script:
+    # - yarn config set registry http://nexus.yiwise.net/repository/yiwise-components-group/
+    # - yarn
+    # - yarn add yiwise-components -S
+    - yarn --registry=http://nexus.yiwise.net/repository/yiwise-components-group/
+    - npm run build:private
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - dist
+
+Prod Build:
+  tags:
+    - shared
+  only:
+    - master@ai-call-platform/ai-call-platform-web
+    - prepub@ai-call-platform/ai-call-platform-web
+  image: node:9
+  stage: build
+  script:
+    # - yarn config set registry http://nexus.yiwise.net/repository/yiwise-components-group/
+    # - yarn
+    # - yarn add yiwise-components -S
+    - yarn --registry=http://nexus.yiwise.net/repository/yiwise-components-group/
+    - npm run build:prod
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - dist
+
+#unit test:
+#  tags:
+#    - shared
+#  image: node:9
+#  stage: test
+#  script:
+#    - npm run test
+
+deploy:
+  tags:
+    - shared
+  only:
+    - develop@ai-call-platform/ai-call-platform-web
+  image: yiwise/alpine:deploy
+  stage: deploy
+  script:
+    - ls -la
+    - mkdir -p ~/.ssh
+    - echo "$SSH_PRIVATE_KEY_TEST" >> ~/.ssh/id_dsa
+    - chmod 600 ~/.ssh/id_dsa
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    - rsync -rav --delete dist/ $TEST_SERVER
+
+test:
+  tags:
+    - shared
+  only:
+    - develop@ai-call-platform/ai-call-platform-web
+  image: yiwise/alpine:deploy
+  stage: deploy
+  script:
+    - ls -la
+    - mkdir -p ~/.ssh
+    - echo "$SSH_PRIVATE_KEY_TEST2" >> ~/.ssh/id_dsa
+    - chmod 600 ~/.ssh/id_dsa
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    - rsync -rav --delete dist/ $TEST_SERVER2
+
+local:
+  tags:
+    - shared
+  only:
+    - local@ai-call-platform/ai-call-platform-web
+  image: yiwise/alpine:deploy
+  stage: deploy
+  script:
+    - ls -la
+    - mkdir -p ~/.ssh
+    - echo "$SSH_PRIVATE_KEY_LOCAL" >> ~/.ssh/id_dsa
+    - chmod 600 ~/.ssh/id_dsa
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    - rsync -rav --delete dist/ $LOCAL_SERVER
+
+prepub:
+  tags:
+    - shared
+  only:
+    - prepub@ai-call-platform/ai-call-platform-web
+  image: yiwise/alpine:deploy
+  stage: deploy
+  script:
+    - ls -la
+    - mkdir -p ~/.ssh
+    - echo "$SSH_PRIVATE_KEY_PREPUB" >> ~/.ssh/id_dsa
+    - chmod 600 ~/.ssh/id_dsa
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    - rsync -rav --delete dist/ $PREPUB_SERVER
+
+production1:
+  tags:
+    - shared
+  only:
+    - master@ai-call-platform/ai-call-platform-web
+  image: yiwise/alpine:deploy
+  stage: deploy
+  script:
+    - ls -la
+    - mkdir -p ~/.ssh
+    - echo "$SSH_PRIVATE_KEY_PROD" >> ~/.ssh/id_dsa
+    - chmod 600 ~/.ssh/id_dsa
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    - echo $PRODUCTION_SERVER1
+    - rsync -rav --delete dist/ $PRODUCTION_SERVER1
+
+production2:
+  tags:
+    - ai-call-platform
+  only:
+    - master@ai-call-platform/ai-call-platform-web
+  image: yiwise/alpine:deploy
+  stage: deploy
+  script:
+    - ls -la
+    - mkdir -p ~/.ssh
+    - echo "$SSH_PRIVATE_KEY_PROD" >> ~/.ssh/id_dsa
+    - chmod 600 ~/.ssh/id_dsa
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    - rsync -rav --delete dist/ $PRODUCTION_SERVER2
+
+# production3:
+#   tags:
+#     - ai-call-platform
+#   only:
+#     - master@ai-call-platform/ai-call-platform-web
+#   image: yiwise/alpine:deploy
+#   stage: deploy
+#   script:
+#     - ls -la
+#     - mkdir -p ~/.ssh
+#     - echo "$SSH_PRIVATE_KEY_PROD" >> ~/.ssh/id_dsa
+#     - chmod 600 ~/.ssh/id_dsa
+#     - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+#     - rsync -rav --delete dist/ $PRODUCTION_SERVER3
+
+# production4:
+#   tags:
+#     - ai-call-platform
+#   only:
+#     - master@ai-call-platform/ai-call-platform-web
+#   image: yiwise/alpine:deploy
+#   stage: deploy
+#   script:
+#     - ls -la
+#     - mkdir -p ~/.ssh
+#     - echo "$SSH_PRIVATE_KEY_PROD" >> ~/.ssh/id_dsa
+#     - chmod 600 ~/.ssh/id_dsa
+#     - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+#     - rsync -rav --delete dist/ $PRODUCTION_SERVER4
