@@ -1,13 +1,22 @@
-// import store from '@/store'
-const store = window.$nuxt.$store
 import { Message, Notification } from 'element-ui'
 import * as contactAPI from '@/api/contact'
 import JSZip from '@/assets/jszip'
-import * as saveAs from '@/assets/FileSaver'
+import saveAs from '@/assets/FileSaver'
 // import '@/assets/streamSaver'
 // import streamBrowserify from 'stream-browserify'
 // import 'buffer'
 // console.log(streamBrowserify)
+
+// const JSZip = require('@/assets/jszip')
+// if (typeof JSZip === 'undefined') {
+//   var JSZip = function() {}
+// }
+console.log(JSZip)
+
+console.log(typeof JSZip)
+// if (typeof window === 'undefined') {
+//   var window = { $nuxt: { $store: {}}}
+// }
 
 let stoped = false
 
@@ -112,10 +121,10 @@ const utils = {
       }
 
       // 设置全局下载状态，用于离开页面重新进入时对下载按钮进行控制
-      store.dispatch('setDownloaingAudioState', {
-        downloadingAudio: store.getters.downloadingAudio,
-        downloadingCur: store.getters.downloadingCur + 1,
-        downloadingTotal: store.getters.downloadingTotal
+      window.$nuxt.$store.dispatch('setDownloaingAudioState', {
+        downloadingAudio: window.$nuxt.$store.getters.downloadingAudio,
+        downloadingCur: window.$nuxt.$store.getters.downloadingCur + 1,
+        downloadingTotal: window.$nuxt.$store.getters.downloadingTotal
       })
       resolve()
     })
@@ -165,67 +174,6 @@ function loadAudio(number, paginationParams, getDataFn, seatType) {
       return
     }
 
-    // let writeStream = window.streamSaver.createWriteStream('output.zip').getWriter()
-
-    // var hh = zip.generateInternalStream({ type: 'blob' })
-    //   .on('data', data => (console.log('wirting chunk'), writeStream.write(data)))
-    //   .on('error', err => console.error(err))
-    //   .on('end', () => writeStream.close())
-    //   .resume()
-    // // hh.on('data', function(chunk) {
-    // //   // if we push the chunk to an other service which is overloaded, we can
-    // //   // pause the stream as backpressure.
-    // //   // this.pause()
-    // // }).resume()
-
-    // hh.accumulate(function updateCallback(metadata) {
-    //   console.log(metadata)
-    //   // metadata contains for example currentFile and percent, see the generateInternalStream doc.
-    // }).then(function(content) {
-    //   console.log(content)
-    //   // data contains here the complete zip file as a uint8array (the type asked in generateInternalStream)
-    //   saveAs(content, 'audios.zip')
-    //   zip.remove('audios')
-    //   // 释放内存
-    //   saveAs.unload && saveAs.unload()
-
-    //   Notification({
-    //     title: '下载中...',
-    //     message: `第${number}组任务已经下载完成`,
-    //     showClose: false
-    //   })
-
-    //   setTimeout(function() {
-    //     // zip.resume()
-    //     resolve()
-    //   }, 5000)
-    // })
-    // .accumulate(function callback(err, content) {
-    //   if (err) {
-    //     console.log(err)
-    //     // handle error
-    //   }
-    //   // see FileSaver.js
-    //   saveAs(content, "hello.zip")
-    //   zip.remove('audios')
-    //   // 释放内存
-    //   saveAs.unload && saveAs.unload()
-
-    //   Notification({
-    //     title: '下载中...',
-    //     message: `第${number}组任务已经下载完成`,
-    //     showClose: false
-    //   })
-
-    //   setTimeout(function() {
-    //     // zip.resume()
-    //     resolve()
-    //   }, 5000)
-    // }, function updateCallback(metadata) {
-    //   // print progression with metadata.percent and metadata.currentFile
-    // })
-
-    // console.log(content)
     console.log('---------------------------zip-----------------------------')
     const content = await zip.generateAsync({ type: 'blob' })
 
@@ -274,7 +222,7 @@ export async function downloadAudios(allChecked, multipleSelection, type, pagina
       showClose: false
     })
 
-    store.dispatch('setDownloaingAudioState', {
+    window.$nuxt.$store.dispatch('setDownloaingAudioState', {
       downloadingAudio: true,
       downloadingCur: 1,
       downloadingTotal: multipleSelection.length
@@ -316,7 +264,7 @@ export async function downloadAudios(allChecked, multipleSelection, type, pagina
     const { data } = res
     const { pages, totalElements } = data
 
-    store.dispatch('setDownloaingAudioState', {
+    window.$nuxt.$store.dispatch('setDownloaingAudioState', {
       downloadingAudio: true,
       downloadingCur: 1,
       downloadingTotal: totalElements
@@ -333,7 +281,7 @@ export async function downloadAudios(allChecked, multipleSelection, type, pagina
     }
   }
 
-  store.dispatch('setDownloaingAudioState', {
+  window.$nuxt.$store.dispatch('setDownloaingAudioState', {
     downloadingAudio: false,
     downloadingCur: 0,
     downloadingTotal: 0
@@ -352,7 +300,7 @@ export const cancelDownload = () => {
   zip.remove('audios')
   saveAs.unload && saveAs.unload()
 
-  store.dispatch('setDownloaingAudioState', {
+  window.$nuxt.$store.dispatch('setDownloaingAudioState', {
     downloadingAudio: false,
     downloadingCur: 0,
     downloadingTotal: 0

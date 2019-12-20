@@ -19,7 +19,7 @@
       <el-button type="primary" @click="showCustomerForm" icon="el-icon-plus" v-if="hasAccess('crm_publicSea_addOrEdit')">新建{{customerStr}}</el-button>
       <!-- 批量删除 -->
       <multi-del-confirm
-        class="ml10 mr10"
+        class="ml10 mr10 multi-del-confirm"
         :onSubmit="handleBatchDel"
         :multipleSelection="multipleSelection"
         v-if="hasAccess('crm_publicSea_del')"
@@ -266,5 +266,9 @@ export default {
 
   .preview {
     @extend %tableAction;
+  }
+
+  .multi-del-confirm {
+    font-size: 0;
   }
 </style>

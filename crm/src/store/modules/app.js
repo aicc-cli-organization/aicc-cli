@@ -1,5 +1,20 @@
 import Cookies from 'js-cookie'
 
+if (typeof window === 'undefined') {
+  var window = {}
+}
+if (!window.localStorage) {
+  window.localStorage = {}
+}
+if (!window.localStorage.getItem) {
+  window.localStorage.getItem = function() {}
+}
+if (!window.location) {
+  window.location = {
+    href: ''
+  }
+}
+
 const isYuHangJianKongJu = window.location.href.includes(window.YuHangJianKongJuIP) // 余杭监控局
 const isGongDaoBeiJingIP = window.location.href.includes(window.GongDaoBeiJingIP) // 共道北京
 const isCourt = (window.courtIP || []).find(ip => window.location.href.includes(ip)) // 是否是法院项目

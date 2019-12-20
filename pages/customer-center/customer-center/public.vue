@@ -1,16 +1,17 @@
 <template>
-  <login></login>
+  <section class="container">
+    <publicSea />
+  </section>
 </template>
 
 <script>
-import login from '../../crm/src/views/login'
+import publicSea from '../../../crm/src/views/customer/publicSea/index.vue'
 
 export default {
   components: {
-    login
+    publicSea
   },
-  mounted() {
-  }
+  mounted() {}
 }
 </script>
 

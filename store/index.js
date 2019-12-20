@@ -16,32 +16,9 @@ import gateway from '../crm/src/store/modules/gateway'
 import customerFields from '../crm/src/store/modules/customerFields'
 import ivr from '../crm/src/store/modules/ivr'
 
-// export const modules = {
-//   app,
-//   qcTask,
-//   permission,
-//   user,
-//   talk,
-//   task,
-//   tag,
-//   navbarDot,
-//   callDetail,
-//   taskV2,
-//   intervalTag,
-//   artificial,
-//   smsTask,
-//   gateway,
-//   customerFields,
-//   ivr
-// }
-
-// export { default as getters } from '../crm/src/store/getters'
-// export getters from '../crm/src/store/getters'
-
 import Vuex from 'vuex'
 
 const createStore = () => {
-  console.log('----------createStore------------')
   return new Vuex.Store({
     modules: {
       app,

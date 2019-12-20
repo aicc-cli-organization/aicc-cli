@@ -5,9 +5,55 @@
  * Copyright (C) 1998-2018 by Northwoods Software Corporation.  All Rights Reserved.
  * THIS SOFTWARE IS LICENSED.  THE LICENSE AGREEMENT IS AT: https://gojs.net/1.8.21/doc/license.html.
  */
+
+if (typeof window === 'undefined') {
+  var window = {}
+}
+if (typeof document === 'undefined') {
+  var document = {
+    createElement: function() {
+      return {
+        getContext: function() { return {} }
+      }
+    },
+    createElementNS: function() {
+      return {
+        getContext: function() { return {} }
+      }
+    },
+    body: {
+      appendChild: function() {}
+    },
+    getElementsByTagName() {
+      return [{
+        appendChild: function() {}
+      }]
+    }
+  }
+}
+if (!window.document) {
+  window.document = document
+}
+if (!window.localStorage) {
+  window.localStorage = {}
+}
+if (!window.localStorage.getItem) {
+  window.localStorage.getItem = function() {}
+}
+if (!window.location) {
+  window.location = {
+    href: ''
+  }
+}
+if (!window.console) {
+  window.console = {
+    log: function() {}
+  }
+}
+
 (function (window) {
   var g, ca = {};
-  if (!window.document || void 0 === window.document.createElement("canvas").getContext) throw window.console && window.console.log("The HTML Canvas element is not supported in this browser,or this browser is in Compatibility mode."), Error("The HTML Canvas element is not supported in this browser,or this browser is in Compatibility mode.");
+  // if (!window.document || void 0 === window.document.createElement("canvas").getContext) throw window.console && window.console.log("The HTML Canvas element is not supported in this browser,or this browser is in Compatibility mode."), Error("The HTML Canvas element is not supported in this browser,or this browser is in Compatibility mode.");
   if (!Object.defineProperty) throw Error("GoJS requires a newer version of JavaScript");
   Function.prototype.bind || (Function.prototype.bind = function (a) {
     function b() {

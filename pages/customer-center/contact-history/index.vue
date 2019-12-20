@@ -1,27 +1,17 @@
 <template>
   <section class="container">
-    <myCustomer />
+    <contactHistory />
   </section>
 </template>
 
 <script>
-import Logo from '@@/components/Logo.vue'
-import myCustomer from '../../crm/src/views/customer/PrivateSea/index.vue'
-import '../../crm/src/main.js'
-import Vue from 'vue'
-console.log('pages index')
+import contactHistory from '../../../crm/src/views/customer/contactHistory/index.vue'
 
 export default {
   components: {
-    Logo,
-    myCustomer
+    contactHistory
   },
-  mounted() {
-    console.log('outter this')
-    console.log(this)
-    console.log(this.$store)
-    console.log(Vue)
-  }
+  mounted() {}
 }
 </script>
 

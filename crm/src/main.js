@@ -3,9 +3,6 @@ import Vue from 'vue'
 import 'normalize.css/normalize.css'// A modern alternative to CSS resets
 import 'yiwise-components/dist/yiwise-components.common.css'
 
-import '@/theme/index.scss' // 重写element样式
-import '@/styles/index.scss' // global css
-
 import request from './utils/request'
 import { hasAccess, hasOneAccessOf } from './utils/access'
 
@@ -30,12 +27,12 @@ Vue.prototype.hasAccess = hasAccess
 Vue.prototype.hasOneAccessOf = hasOneAccessOf
 Vue.prototype.$validate = validate
 
-// 生产环境不打印console
-if (window.location.host.toLowerCase() === 'crm.tanyibot.com') {
-  console.log = function() {
-    return false
-  }
-  console.groupCollapsed = function() {
-    return false
-  }
-}
+// // 生产环境不打印console
+// if (window.location.host.toLowerCase() === 'crm.tanyibot.com') {
+//   console.log = function() {
+//     return false
+//   }
+//   console.groupCollapsed = function() {
+//     return false
+//   }
+// }
