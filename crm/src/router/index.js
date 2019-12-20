@@ -159,7 +159,19 @@ export const asyncRouterMap = [
         type: 'crm',
         isLocal: Store.getters.isLocal
       })
-    }, {
+    },{
+      path: 'nlpDialog',
+      component: () => import('@/views/NlpDialog'),
+      name: 'nlpDialog',
+      meta: {
+        title: '智能对话',
+        iconfont: 'icon-huashushejix',
+        iconStyle: { 'font-size': '14px', 'margin-right': '5px' }
+      },
+      props: () => ({
+        type: 'crm'
+      })
+    },{
       path: 'knowledgeShare',
       component: KnowledgeShare,
       name: 'knowledgeShare',
