@@ -11,54 +11,6 @@
 /* jslint bitwise: true, indent: 4, laxbreak: true, laxcomma: true, smarttabs: true, plusplus: true */
 
 /*! @source http://purl.eligrey.com/github/FileSaver.js/blob/master/FileSaver.js */
-if (typeof window === 'undefined') {
-  var window = {
-    addEventListener: function() {},
-    removeEventListener: function() {}
-  }
-}
-if (typeof document === 'undefined') {
-  var document = {
-    createElement: function() {
-      return {
-        getContext: function() { return {} }
-      }
-    },
-    createElementNS: function() {
-      return {
-        getContext: function() { return {} }
-      }
-    },
-    body: {
-      appendChild: function() {}
-    },
-    getElementsByTagName() {
-      return [{
-        appendChild: function() {}
-      }]
-    }
-  }
-}
-if (!window.document) {
-  window.document = document
-}
-if (!window.localStorage) {
-  window.localStorage = {}
-}
-if (!window.localStorage.getItem) {
-  window.localStorage.getItem = function() {}
-}
-if (!window.location) {
-  window.location = {
-    href: ''
-  }
-}
-if (!window.console) {
-  window.console = {
-    log: function() {}
-  }
-}
-
 var saveAs = saveAs ||
   // IE 10+ (native saveAs)
   (typeof navigator !== 'undefined' &&

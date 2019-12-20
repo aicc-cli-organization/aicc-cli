@@ -20,7 +20,10 @@ import * as contactAPI from '@/api/contact'
 // import * as saveAs from './FileSaver'
 import { YiwisePopConfirm } from 'yiwise-components'
 import { mapGetters, mapActions } from 'vuex'
-import { downloadAudios, cloneData, cancelDownload } from '@/utils/downloadAudio'
+if (process.client) {
+  var { downloadAudios, cloneData, cancelDownload } = require('@/utils/downloadAudio')
+  // import { downloadAudios, cloneData, cancelDownload } from '@/utils/downloadAudio'
+}
 
 export default {
   components: {
@@ -70,7 +73,9 @@ export default {
   },
   methods: {
     stopDownload() {
-      cancelDownload()
+      if (process.client) {
+        cancelDownload()
+      }
     },
     // ...mapActions(['setDownloaingAudioState']),
     // praseIPCData(array) {
@@ -142,10 +147,12 @@ export default {
     //   )
     // },
     async IPCSend(command) {
-      if (this.downloadingAudio) {
-        // this.stopDownload()
-      } else {
-        downloadAudios(this.allChecked, cloneData(this.multipleSelection), this.type, cloneData(this.paginationParams), this.tag, this.seatType)
+      if (process.client) {
+        if (this.downloadingAudio) {
+          // this.stopDownload()
+        } else {
+          downloadAudios(this.allChecked, cloneData(this.multipleSelection), this.type, cloneData(this.paginationParams), this.tag, this.seatType)
+        }
       }
       // if (!this.allChecked) {
       //   if ((this.multipleSelection).length === 0) {
