@@ -310,13 +310,13 @@
         this.loginType = 2
         return
       }
-      const { data } = await getWechatLoginQrCode()
-      if (data.data) {
-        const { url, callBackId } = data.data
-        this.qrcodeUrl = url
-        this.callBackId = callBackId
-        this.startPolling(callBackId)
-      }
+      // const { data } = await getWechatLoginQrCode()
+      // if (data.data) {
+      //   const { url, callBackId } = data.data
+      //   this.qrcodeUrl = url
+      //   this.callBackId = callBackId
+      //   this.startPolling(callBackId)
+      // }
     },
     destroyed() {
       // window.removeEventListener('hashchange', this.afterQRScan)
@@ -331,7 +331,7 @@
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-  @import 'src/styles/variables.scss';
+  @import '~src/styles/variables.scss';
   $bg:#2d3a4b;
   $light_gray:#eee;
 

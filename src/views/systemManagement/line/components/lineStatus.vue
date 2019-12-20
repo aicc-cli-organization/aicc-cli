@@ -48,7 +48,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import 'src/styles/variables.scss';
+@import '~src/styles/variables.scss';
 .el-scrollbar {
   /deep/ .line-cont {
     max-height: 300px;

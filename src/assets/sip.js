@@ -42,8 +42,15 @@
 		define([], factory);
 	else if(typeof exports === 'object')
 		exports["SIP"] = factory();
-	else
-		root["SIP"] = factory();
+	else {
+    var g;
+    if(typeof window!=="undefined"){g=window}
+    else if(typeof global!=="undefined"){g=global}
+    else if(typeof root!=="undefined"){g=root}
+    else{g=this}
+    g["SIP"] = factory()
+  }
+		// root["SIP"] = factory();
 })(this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache

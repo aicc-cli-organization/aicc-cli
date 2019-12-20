@@ -395,8 +395,8 @@ export default {
 }
 </script>
 <style lang='scss' scoped>
-@import 'src/styles/variables.scss';
-@import 'src/styles/mixin.scss';
+@import '~src/styles/variables.scss';
+@import '~src/styles/mixin.scss';
 @import 'http://at.alicdn.com/t/font_747212_45ahtuc6aj1.css';
 .env-content{
     margin-bottom: -10px;

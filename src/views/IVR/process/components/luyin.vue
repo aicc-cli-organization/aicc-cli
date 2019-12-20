@@ -414,7 +414,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import 'src/styles/placeholder.scss';
+  @import '~src/styles/placeholder.scss';
   $-yuyin-hover-bg: #f2f2f2;
   .yuyin-container {
     height: 56px;

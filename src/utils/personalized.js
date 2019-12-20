@@ -1,5 +1,6 @@
 import { getPersonalization , getPersonalizationForDomain } from '@/api/login'
-import store from '../store'
+// import store from '../store'
+const store = window.$nuxt.$store
 
 export async function personalizedUrlList(specialDomainName) {
 	const { data } = await getPersonalizationForDomain({

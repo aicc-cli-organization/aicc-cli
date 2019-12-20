@@ -1,5 +1,6 @@
-import router from './router'
-import store from './store'
+// import router from './router'
+const router = window.$nuxt.$router
+// import store from './store'
 import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css'// progress bar style
 import { getToken, removeToken } from '@/utils/auth' // getToken from cookie
@@ -28,6 +29,8 @@ const hasRouter = (r) => {
 const whiteList = ['/login']// no redirect whitelist
 
 router.beforeEach(async(to, from, next) => {
+  const store = window.$nuxt.$store
+
   NProgress.start() // start progress bar
   personalizedUrlList(window.location.host)
   const token = getToken()

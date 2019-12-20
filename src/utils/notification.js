@@ -1,6 +1,7 @@
-import Store from '../store'
+// import Store from '../store'
+// const Store = window.$nuxt.$store
 
-const customerStr = Store.getters.customerStr
+const customerStr = '客户' // Store.getters.customerStr
 
 const notifications = []
 let curNum = 0

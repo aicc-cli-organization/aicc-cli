@@ -564,8 +564,8 @@
 </script>
 
 <style lang="scss" scoped>
-  @import 'src/styles/variables.scss';
-  @import 'src/styles/placeholder.scss';
+  @import '~src/styles/variables.scss';
+  @import '~src/styles/placeholder.scss';
   $--color-text-inner: #4A4A4A !default;
   $--color-text-blur: #1890FF;
 

@@ -1,18 +1,21 @@
-import store from '@/store'
+// import store from '@/store'
 
 export const hasAccess = (access) => {
-  const csAuth = store.getters.csAuth
-  const authArr = []
-  for (const auth in csAuth) {
-    if (csAuth[auth] === true) {
-      authArr.push(auth)
-    }
-  }
-  return [...store.getters.access, ...authArr].indexOf(access) !== -1
+  return true
+  // const store = window.$nuxt.$store
+  // const csAuth = store.getters.csAuth
+  // const authArr = []
+  // for (const auth in csAuth) {
+  //   if (csAuth[auth] === true) {
+  //     authArr.push(auth)
+  //   }
+  // }
+  // return [...store.getters.access, ...authArr].indexOf(access) !== -1
 }
 
 export const hasOneAccessOf = (accessArr) => {
-  return accessArr.some(access => hasAccess(access))
+  return true
+  // return accessArr.some(access => hasAccess(access))
 }
 
 /**
@@ -21,25 +24,26 @@ export const hasOneAccessOf = (accessArr) => {
  * @param route
  */
 export function hasPermission(access, route) {
-  if (route.meta && route.meta.access) {
-    let hasAccess = false
-    for (let i = 0; i < route.meta.access.length; i++) {
-      const item = route.meta.access[i]
-      if (Array.isArray(item)) {
-        hasAccess = item.every(authd => access.includes(authd))
-        break
-      } else if (access.includes(item)) {
-        hasAccess = true
-        break
-      }
-    }
+  return true
+  // if (route.meta && route.meta.access) {
+  //   let hasAccess = false
+  //   for (let i = 0; i < route.meta.access.length; i++) {
+  //     const item = route.meta.access[i]
+  //     if (Array.isArray(item)) {
+  //       hasAccess = item.every(authd => access.includes(authd))
+  //       break
+  //     } else if (access.includes(item)) {
+  //       hasAccess = true
+  //       break
+  //     }
+  //   }
 
-    return hasAccess
+  //   return hasAccess
 
-    // return access.some(role => {
-    //   return route.meta.access.indexOf(role) >= 0
-    // })
-  } else {
-    return true
-  }
+  //   // return access.some(role => {
+  //   //   return route.meta.access.indexOf(role) >= 0
+  //   // })
+  // } else {
+  //   return true
+  // }
 }

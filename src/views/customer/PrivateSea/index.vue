@@ -434,6 +434,7 @@
         if (typeof index !== 'undefined') {
           this.callRecordIndex = index
         } else {
+          console.log(this.tableData)
           this.callRecordIndex = this.tableData.content.findIndex(item => item.customerPersonId ===  data.customerPersonId)
         }
       },
@@ -492,7 +493,7 @@
           pageSize: 20
         })
 
-        this.allUserList = data.data.content
+        this.allUserList = (data.data || {}).content ||[]
       },
       async importToTaskByIds() {
         const customerPersonIds = this.multipleSelection.map(item => item.customerPersonId)
@@ -633,8 +634,8 @@
 </script>
 
 <style lang="scss" scoped>
-  @import 'src/styles/variables.scss';
-  @import 'src/styles/extend.scss';
+  @import '~src/styles/variables.scss';
+  @import '~src/styles/extend.scss';
 
   .private-sea {
     height: 100%;

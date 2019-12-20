@@ -1,12 +1,5 @@
 <template>
   <div class="private-sea">
-    <option-search-input width="270px"
-      v-model="searchKey"
-      @search="loadData"
-      :option-list="optionList"
-      option-width="110px"
-      >
-    </option-search-input>
     <div class="table-top-action">
       <div class="action-left">
         <el-checkbox v-model="allChecked" @change="handleAllChecked">全选</el-checkbox>
@@ -69,6 +62,9 @@
       :canEditCustomer="true"
       appType="crm"
       @edit-customer="handleEditCustomer"
+      :customerConcernAble="!nlp"
+      :customerPropertyAble="!nlp"
+      :customerIntentAble="true"
     >
       <div slot="header" class="record-detail-header">
         <artificial-call-popover
@@ -109,14 +105,6 @@
   import TableCheckAll from '@/mixins/tableCheckAll'
   import { mapGetters } from 'vuex'
 
-  const optionList = [
-    {
-      label: '通话记录id',
-      searchKey: 'callRecordId',
-      placeholder: '请输入通话记录id'
-    }
-  ]
-
   export default {
     name: 'contactHistory',
     props: {
@@ -124,7 +112,11 @@
         type: String,
         default: ''
       },
-      type: [String]
+      type: [String],
+      nlp: {
+        type: Boolean,
+        default: false
+      }
     },
     // 处理table全选的mixin
     mixins: [TableCheckAll],
@@ -142,9 +134,17 @@
       CustomerDialog
     },
     computed: {
-      ...mapGetters(['call_all_fields', 'call_checked_fields', 'customerFields_private', 'flowId', 'enableCsSeat', 'userEnableCsSeat', 'customerStr']),
+      ...mapGetters([
+        'call_all_fields',
+        'call_checked_fields',
+        'customerFields_private',
+        'flowId',
+        'nlpFlowId',
+        'enableCsSeat',
+        'userEnableCsSeat'
+      ]),
       dialogFlowId() {
-        return this.flowId
+        return this.nlp ? this.nlpFlowId : this.flowId
       },
       showTableHeaders: {
         set(v) {
@@ -251,9 +251,7 @@
         callRecordIndex: -1,
         tableData: {}, // 当前页列表相关数据，包含分页信息
         customerVisible: false, // 是否显示编辑用户dialog
-        editCustomerData: {},
-        searchKey: {}, // 搜索id
-        optionList
+        editCustomerData: {}
       }
     },
     methods: {
@@ -265,7 +263,6 @@
       loadData(params = {}, cb = () => {}) {
         const newParams = {
           ...this.paginationParams,
-          callRecordId:parseInt(this.searchKey.callRecordId),
           ...params
         }
         this.$refs.table.loadData(newParams, (tableData) => {
@@ -304,7 +301,7 @@
       },
       async importToTaskByIds() {
         if (!this.multipleSelection || this.multipleSelection.length === 0) {
-          this.$message.error(`请至少选择一位${this.customerStr}`)
+          this.$message.error('请至少选择一位客户')
           return
         }
 
@@ -314,7 +311,7 @@
           callRecordIds
         })
         this.$store.commit('SHOW_DOWNLOAD_AND_UPLOAD_DOT')
-        this.$message.success(`已导入${callRecordIds.length}个${this.customerStr}到${this.taskForImport.name},任务详细结果请在导入导出列表查看`)
+        this.$message.success(`已导入${callRecordIds.length}个客户到${this.taskForImport.name},任务详细结果请在导入导出列表查看`)
       },
       async importToTaskByFilters() {
         await callRecordFromJobReAdd({
@@ -322,7 +319,7 @@
           targetRobotCallJobId: this.taskForImport.robotCallJobId
         })
         this.$store.commit('SHOW_DOWNLOAD_AND_UPLOAD_DOT')
-        this.$message.success(`已导入${this.checkedCount}个${this.customerStr}到${this.taskForImport.name},任务详细结果请在导入导出列表查看`)
+        this.$message.success(`已导入${this.checkedCount}个客户到${this.taskForImport.name},任务详细结果请在导入导出列表查看`)
       },
       handleShowCallDetail(row, index) {
         var tableData = this.$refs.table.$refs.table.tableData
@@ -458,9 +455,6 @@
     },
     watch: {
       dialogFlowId() {
-        this.searchKey = {
-          callRecordId: null
-        }
         this.loadData()
       }
     }
@@ -468,8 +462,8 @@
 </script>
 
 <style lang="scss" scoped>
-  @import '~src/styles/variables.scss';
-  @import '~src/styles/extend.scss';
+  @import 'src/styles/variables.scss';
+  @import 'src/styles/extend.scss';
 
   .private-sea {
     height: 100%;

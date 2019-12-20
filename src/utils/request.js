@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { Message } from 'element-ui'
-import router from '@/router'
+// import router from '@/router'
 import { removeToken } from '@/utils/auth'
 
 import qs from 'qs'
@@ -86,7 +86,7 @@ service.interceptors.response.use(
       })
       if (code === 400) { // 未登录，跳转到登录页
         removeToken()
-        router.push('/login')
+        window.$nuxt.$router.push('/login')
       }
       return Promise.reject(data)
     }
