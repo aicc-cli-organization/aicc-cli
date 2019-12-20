@@ -69,6 +69,54 @@ const pollyfillStr = `
   })
 })
 
+fs.readdir('node_modules/element-ui/lib/theme-chalk/fonts', function(
+  err,
+  files
+) {
+  if (err) {
+    return console.error(err)
+  }
+  files.forEach(function(file) {
+    console.log(file)
+    fs.readFile(
+      'node_modules/element-ui/lib/theme-chalk/fonts/' + file,
+      function(err, data) {
+        if (err) {
+          return console.error(err)
+        }
+
+        fs.writeFile('./static/fonts/' + file, data, function(err) {
+          if (err) {
+            return console.error(err)
+          }
+          console.log('字体写入成功！')
+        })
+      }
+    )
+  })
+})
+fs.readFile(
+  'node_modules/element-ui/packages/theme-chalk/src/icon.scss',
+  function(err, data) {
+    if (err) {
+      return console.error(err)
+    }
+    // console.log('异步读取文件数据: ' + data.toString())
+    let str = data.toString().replace(/\#\{\$\-\-font\-path\}/g, '/fonts')
+
+    fs.writeFile(
+      'node_modules/element-ui/packages/theme-chalk/src/icon.scss',
+      str,
+      function(err) {
+        if (err) {
+          return console.error(err)
+        }
+        console.log('数据写入成功！')
+      }
+    )
+  }
+)
+
 function resolve(dir) {
   return path.join(__dirname, '.', dir)
 }
