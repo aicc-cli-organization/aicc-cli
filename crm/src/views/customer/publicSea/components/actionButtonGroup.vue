@@ -246,8 +246,8 @@ export default {
 
 
 <style lang="scss" scoped>
-  @import '~src/styles/variables.scss';
-  @import '~src/styles/placeholder.scss';
+  @import 'src/styles/variables.scss';
+  @import 'src/styles/placeholder.scss';
   .title {
     // margin: 15px 16px 15px 0;
     display: flex;

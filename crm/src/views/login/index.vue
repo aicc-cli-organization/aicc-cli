@@ -351,7 +351,7 @@
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-  @import '~src/styles/variables.scss';
+  @import 'src/styles/variables.scss';
   $bg:#2d3a4b;
   $light_gray:#eee;
 

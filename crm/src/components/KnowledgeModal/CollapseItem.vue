@@ -71,7 +71,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '~src/styles/variables.scss';
+  @import 'src/styles/variables.scss';
 
   .collapse-item {
     background: #f2f2f2;

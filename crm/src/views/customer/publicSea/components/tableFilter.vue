@@ -187,8 +187,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '~src/styles/variables.scss';
-  @import '~src/styles/placeholder.scss';
+  @import 'src/styles/variables.scss';
+  @import 'src/styles/placeholder.scss';
   .button-form-inline {
     margin: 0 20px 14px 20px;
   }

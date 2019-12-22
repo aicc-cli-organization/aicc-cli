@@ -169,7 +169,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~src/styles/variables.scss';
+@import 'src/styles/variables.scss';
 
 .intent-wechat-push {
   width: 824px;

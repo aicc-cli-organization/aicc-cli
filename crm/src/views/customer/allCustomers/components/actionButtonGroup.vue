@@ -96,8 +96,8 @@ export default {
 
 
 <style lang="scss" scoped>
-  @import '~src/styles/variables.scss';
-  @import '~src/styles/placeholder.scss';
+  @import 'src/styles/variables.scss';
+  @import 'src/styles/placeholder.scss';
   .title {
     display: flex;
     justify-content: space-between;

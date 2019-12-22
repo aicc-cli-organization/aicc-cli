@@ -123,8 +123,8 @@
 </script>
 
 <style lang="scss" scoped>
-@import '~src/styles/variables.scss';
-@import '~src/styles/placeholder.scss';
+@import 'src/styles/variables.scss';
+@import 'src/styles/placeholder.scss';
 
 .recognize {
   color: $--color-danger;

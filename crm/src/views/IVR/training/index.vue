@@ -162,7 +162,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~src/styles/variables.scss';
+@import 'src/styles/variables.scss';
 
 .section-ivr-test {
   display: flex;

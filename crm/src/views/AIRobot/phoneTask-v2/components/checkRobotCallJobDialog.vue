@@ -142,7 +142,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~src/styles/mixin.scss";
+@import "src/styles/mixin.scss";
 
 ul {
   padding: 0;

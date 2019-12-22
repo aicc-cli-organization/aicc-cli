@@ -230,18 +230,48 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
-    // plugins: [
-    //   new webpack.DllReferencePlugin({
-    //     context: path.resolve('./crm/build'),
-    //     manifest: require('./crm/build/vendor-manifest.json')
-    //   })
-    // ],
+    plugins: [
+      // new webpack.DllReferencePlugin({
+      //   context: path.resolve('./crm/build'),
+      //   manifest: require('./crm/build/vendor-manifest.json')
+      // })
+      new webpack.NormalModuleReplacementPlugin(/\@\//, function(resource) {
+        if (resource.context.includes('crm')) {
+          resource.request = resource.request.replace('@/', '@/crm/src/')
+          // fs.writeFile('input.txt', 'context: '+resource.context+'\n       '+resource.request + '\n', {
+          //   flag: 'a'
+          // }, function(
+          //   err
+          // ) {
+          //   if (err) {
+          //     return console.error(err)
+          //   }
+          //   console.log('数据写入成功！')
+          // })
+        }
+      })
+    ],
     loaders: {
       scss: {
-        includePaths: [
-          // 'node_modules/element-ui/packages/theme-chalk/src/index.scss'
-          resolve('node_modules')
-        ]
+        sassOptions: (loaderContext) => {
+          // More information about available properties https://webpack.js.org/api/loaders/
+          const { context } = loaderContext;
+
+          if (context.includes('crm')) {
+            return {
+              includePaths: [resolve('node_modules'), resolve('crm')]
+            }
+          }
+
+          return {
+            includePaths: [resolve('node_modules')]
+          }
+        }
+        // [
+        //   // 'node_modules/element-ui/packages/theme-chalk/src/index.scss'
+        //   resolve('node_modules'),
+        //   resolve('crm')
+        // ]
       }
     },
     extend(config, { isDev, isClient, isServer }) {
@@ -304,37 +334,42 @@ module.exports = {
         ]
       }
 
-      config.resolve.alias['@'] = resolve('crm/src')
-      config.resolve.alias['~'] = resolve('crm/src')
+      // config.resolve.alias['@'] = resolve('crm/src')
+      // config.resolve.alias['~'] = resolve('crm/src')
       config.resolve.alias['vue$'] = 'vue/dist/vue.esm.js'
-      config.resolve.alias['src'] = resolve('crm/src')
+      // config.resolve.alias['src'] = resolve('crm/src')
+      config.resolve.alias['styles'] = resolve('styles')
       config.resolve.alias['element-ui'] = resolve('node_modules/element-ui')
-      console.log(resolve('crm/src'))
+      // console.log(resolve('crm/src'))
 
       // config.plugins.push(
       //   new webpack.ContextReplacementPlugin(/^src$/, context => {
+      //     console.log(context.context)
       //     // if (!/\/moment\//.test(context.context)) return
 
       //     Object.assign(context, {
       //       regExp: /^\.\/\w+/,
       //       request: '../../locale' // 相对路径解析
       //     })
-      //     console.log(context)
+      //     // console.log(context.context)
       //   })
       // )
 
       // config.module.rules.forEach(rule => {
       //   // rule.testStr = rule.test.toString()
-      //   if (rule.test.toString() === '/\\.jsx?$/i') {
-      //     // rule.include = [
-      //     //   resolve(
-      //     //     'node_modules/yiwise-components/dist/yiwise-components.common.js'
-      //     //   )
-      //     // ]
-      //     rule.exclude = [
-      //       resolve('crm/src/assets/go.js'),
-      //       resolve('crm/src/assets/sip.js')
-      //     ]
+      //   // if (rule.test.toString() === '/\\.jsx?$/i') {
+      //   //   // rule.include = [
+      //   //   //   resolve(
+      //   //   //     'node_modules/yiwise-components/dist/yiwise-components.common.js'
+      //   //   //   )
+      //   //   // ]
+      //   //   rule.exclude = [
+      //   //     resolve('crm/src/assets/go.js'),
+      //   //     resolve('crm/src/assets/sip.js')
+      //   //   ]
+      //   // }
+      //   if (rule.test.toString() === '/\\.scss$/i') {
+          
       //   }
       // })
 
@@ -347,7 +382,7 @@ module.exports = {
       //   console.log('数据写入成功！')
       // })
 
-      // console.log(config)
+      // console.log(config.resolve.alias)
     }
   }
 }

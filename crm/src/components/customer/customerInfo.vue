@@ -103,8 +103,8 @@
 </script>
 
 <style lang="scss" scoped>
-  @import '~src/styles/placeholder.scss';
-  @import '~src/styles/variables.scss';
+  @import 'src/styles/placeholder.scss';
+  @import 'src/styles/variables.scss';
 
   .customer-info {
     overflow: auto;

@@ -582,8 +582,8 @@
 </script>
 
 <style lang="scss" scoped>
-  @import '~src/styles/variables.scss';
-  @import '~src/styles/extend.scss';
+  @import 'src/styles/variables.scss';
+  @import 'src/styles/extend.scss';
 
   .private-sea {
     height: 100%;

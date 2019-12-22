@@ -178,7 +178,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~src/styles/variables.scss';
+@import 'styles/variables.scss';
 
 $menuHover: #edf8f8;
 $menuItemHeight: 42px;
