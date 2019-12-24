@@ -238,16 +238,6 @@ module.exports = {
       new webpack.NormalModuleReplacementPlugin(/\@\//, function(resource) {
         if (resource.context.includes('crm')) {
           resource.request = resource.request.replace('@/', '@/crm/src/')
-          // fs.writeFile('input.txt', 'context: '+resource.context+'\n       '+resource.request + '\n', {
-          //   flag: 'a'
-          // }, function(
-          //   err
-          // ) {
-          //   if (err) {
-          //     return console.error(err)
-          //   }
-          //   console.log('数据写入成功！')
-          // })
         }
       })
     ],
@@ -339,6 +329,7 @@ module.exports = {
       config.resolve.alias['vue$'] = 'vue/dist/vue.esm.js'
       // config.resolve.alias['src'] = resolve('crm/src')
       config.resolve.alias['styles'] = resolve('styles')
+      config.resolve.alias['@aicc'] = resolve('aicc-components')
       config.resolve.alias['element-ui'] = resolve('node_modules/element-ui')
       // console.log(resolve('crm/src'))
 

@@ -1,19 +1,23 @@
 <template>
-  <div class="container">
-    <Sidebar class="side-bar" v-if="$route.path !== '/customer-center/login'" />
-    <div class="app">
-      <nuxt/>
+  <div>
+    <base-top-nav />
+    <div class="container">
+      <Sidebar class="side-bar" v-if="$route.path !== '/customer-center/login'" />
+      <div class="app">
+        <nuxt/>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import '../crm/src/main.js'
-import Sidebar from '@@/components/Sidebar'
-import { getToken } from '@@/utils/auth'
+import Sidebar from '@/components/Sidebar'
+import { getToken } from '@/utils/auth'
+import { BaseTopNav } from '@aicc/components'
 
 export default {
-  components: { Sidebar },
+  components: { Sidebar, BaseTopNav },
   created() {
     console.log(this.$route)
 
