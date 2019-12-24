@@ -253,9 +253,9 @@ module.exports = {
     ],
     loaders: {
       scss: {
-        sassOptions: (loaderContext) => {
+        sassOptions: loaderContext => {
           // More information about available properties https://webpack.js.org/api/loaders/
-          const { context } = loaderContext;
+          const { context } = loaderContext
 
           if (context.includes('crm')) {
             return {
