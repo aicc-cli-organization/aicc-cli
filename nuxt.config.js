@@ -238,6 +238,11 @@ module.exports = {
       new webpack.NormalModuleReplacementPlugin(/\@\//, function(resource) {
         if (resource.context.includes('crm')) {
           resource.request = resource.request.replace('@/', '@/crm/src/')
+        } else if (resource.context.includes('aicc-components')) {
+          resource.request = resource.request.replace(
+            '@/',
+            '@/aicc-components/'
+          )
         }
       })
     ],
@@ -250,6 +255,13 @@ module.exports = {
           if (context.includes('crm')) {
             return {
               includePaths: [resolve('node_modules'), resolve('crm')]
+            }
+          } else if (context.includes('aicc-components')) {
+            return {
+              includePaths: [
+                resolve('node_modules'),
+                resolve('aicc-components')
+              ]
             }
           }
 
@@ -328,7 +340,6 @@ module.exports = {
       // config.resolve.alias['~'] = resolve('crm/src')
       config.resolve.alias['vue$'] = 'vue/dist/vue.esm.js'
       // config.resolve.alias['src'] = resolve('crm/src')
-      config.resolve.alias['styles'] = resolve('styles')
       config.resolve.alias['@aicc'] = resolve('aicc-components')
       config.resolve.alias['element-ui'] = resolve('node_modules/element-ui')
       // console.log(resolve('crm/src'))

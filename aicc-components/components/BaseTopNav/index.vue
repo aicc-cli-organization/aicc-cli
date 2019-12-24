@@ -63,10 +63,13 @@ export default {
       sysUnread: false,
     }
   },
-  ...mapGetters([
-    'showWarnningMessageDot',
-    'showSystemAnnouncementDot'
-  ]),
+
+  computed: {
+    ...mapGetters([
+      'showWarnningMessageDot',
+      'showSystemAnnouncementDot'
+    ])
+  },
 
   components: {
     MultiColorIcon,
@@ -131,7 +134,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'src/styles/mixin.scss';
+@import '@aicc/styles/mixin.scss';
 .base-topnav {
   height: 46px;
   padding: 0 20px;

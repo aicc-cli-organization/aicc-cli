@@ -44,6 +44,7 @@ export default {
 .container {
   display: flex;
   overflow: auto;
+  height: 100%;
   .side-bar {
     width: 170px;
     flex: 170px 0 0;

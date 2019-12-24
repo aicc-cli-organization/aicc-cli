@@ -389,15 +389,16 @@ export default {
         }
     },
     created:()=>{
+      if (process.client) {
         window.AudioContext = window.AudioContext ||
-                                window.webkitAudioContext;
+                              window.webkitAudioContext;
+      }
     }
 }
 </script>
 <style lang='scss' scoped>
-@import 'src/styles/variables.scss';
-@import 'src/styles/mixin.scss';
-@import 'http://at.alicdn.com/t/font_747212_45ahtuc6aj1.css';
+@import '@aicc/styles/variables.scss';
+@import '@aicc/styles/mixin.scss';
 .env-content{
     margin-bottom: -10px;
     min-height: 400px;

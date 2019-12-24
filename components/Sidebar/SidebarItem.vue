@@ -123,7 +123,7 @@ export default {
 
 
 <style lang="scss" scoped>
-@import 'styles/variables.scss';
+@import '@aicc/styles/variables.scss';
 
 .iconfont {
   font-size: 16px !important;
