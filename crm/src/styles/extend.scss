@@ -1,0 +1,13 @@
+// select button样式
+.sel-button {
+  display: flex;
+  /deep/ .el-input__inner {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: none;
+  }
+  .el-button {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
