@@ -371,7 +371,7 @@ module.exports = {
       //   //   ]
       //   // }
       //   if (rule.test.toString() === '/\\.scss$/i') {
-          
+
       //   }
       // })
 
