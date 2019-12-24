@@ -83,7 +83,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'src/styles/variables.scss';
+@import '~@aicc/styles/variables.scss';
 
 .top-message {
   height: 100%;

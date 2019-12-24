@@ -25,7 +25,7 @@
   </div>
 </template>
 <script>
-import YiwiseDialog from '@/components/YiwiseDialog'
+import YiwiseDialog from '@aicc/components/YiwiseDialog'
 import messagePaginationTable from '../messagePaginationTable'
 
 export default {

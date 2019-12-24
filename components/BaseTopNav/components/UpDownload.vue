@@ -121,7 +121,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'src/styles/variables.scss';
+@import '~@aicc/styles/variables.scss';
 .download-and-upload-popover {
   cursor: pointer;
   margin-right: 40px;
