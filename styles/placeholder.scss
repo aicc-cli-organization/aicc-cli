@@ -1,0 +1,31 @@
+@import './variables.scss';
+
+%tableAction {
+  display: inline-block;
+  margin-right: 6px;
+  color: $--color-primary;
+  cursor: pointer;
+}
+
+%borderTitle {
+  font-size: $--font-size-small;
+  color: $--color-text-regular;
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 10px;
+    background-color: $--color-primary;
+    left: -8px;
+    top: 2px;
+  }
+}
+
+// 超出长度显示省略号
+%ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
