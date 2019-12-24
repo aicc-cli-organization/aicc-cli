@@ -134,7 +134,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@aicc/styles/mixin.scss';
+@import '~@aicc/styles/mixin.scss';
 .base-topnav {
   height: 46px;
   padding: 0 20px;

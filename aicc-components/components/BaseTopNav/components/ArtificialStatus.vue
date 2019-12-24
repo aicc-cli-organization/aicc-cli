@@ -132,8 +132,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@aicc/styles/variables.scss';
-@import '@aicc/styles/mixin.scss';
+@import '~@aicc/styles/variables.scss';
+@import '~@aicc/styles/mixin.scss';
 
 .artificial-status {
   margin-left: 16px;

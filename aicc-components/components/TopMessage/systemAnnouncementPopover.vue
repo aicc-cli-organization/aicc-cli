@@ -84,7 +84,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@aicc/styles/variables.scss';
+@import '~@aicc/styles/variables.scss';
 
 .system-popover {
   cursor: pointer;
