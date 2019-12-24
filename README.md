@@ -22,3 +22,5 @@ git subtree add --prefix=aicc-components aicc-components develop --squash
 
 同步及推送代码命令参照crm
 
+
+# 如果不需要crm，请手动将package.json中的yiwise-components删了，或者其他包觉得不要的也可以删了。。。。
