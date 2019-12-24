@@ -487,8 +487,8 @@ export default {
   }
 </style>
 <style lang="scss" scoped>
-@import "~src/styles/mixin.scss";
-@import '~src/styles/variables.scss';
+@import "src/styles/mixin.scss";
+@import 'src/styles/variables.scss';
 $color-border: #D8D8D8;
 .icon-class {
   cursor: pointer;

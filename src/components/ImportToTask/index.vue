@@ -88,7 +88,7 @@
 
 
 <style lang="scss" scoped>
-@import '~src/styles/extend.scss';
+@import 'src/styles/extend.scss';
 
 .import-task {
   @extend .sel-button;

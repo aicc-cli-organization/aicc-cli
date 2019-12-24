@@ -467,7 +467,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '~src/styles/placeholder.scss';
+  @import 'src/styles/placeholder.scss';
   $--color-borer: #d8d9de;
   
   .keyboard-container {

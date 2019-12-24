@@ -118,6 +118,26 @@
   import { sendLoginCode, getWechatLoginQrCode, loginPolling } from '@/api/login'
   import { mapGetters } from 'vuex'
 
+  if (typeof window === 'undefined') {
+    var window = {}
+  }
+  if (!window.localStorage) {
+    window.localStorage = {}
+  }
+  if (!window.localStorage.getItem) {
+    window.localStorage.getItem = function() {}
+  }
+  if (!window.location) {
+    window.location = {
+      href: ''
+    }
+  }
+  if (!window.console) {
+    window.console = {
+      log: function() {}
+    }
+  }
+
   export default {
     name: 'login',
     data() {
@@ -256,7 +276,7 @@
               }
 
               this.loading = false
-              this.$router.push({ path: this.$route.query.redirect || '/' })
+              this.$router.push({ path: this.$route.query.redirect || '/customer-center/customer-center' })
             } catch (error) {
               this.loading = false
             }
@@ -292,7 +312,7 @@
           const { data } = await loginPolling({ callBackId })
           if (data.data && data.data.tenantId !== undefined) {
             this.closePolling()
-            this.$router.push({ path: this.$route.query.redirect || '/' })
+            this.$router.push({ path: this.$route.query.redirect || '/customer-center/customer-center' })
           }
         }, 3000)
       },
@@ -331,7 +351,7 @@
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-  @import '~src/styles/variables.scss';
+  @import 'src/styles/variables.scss';
   $bg:#2d3a4b;
   $light_gray:#eee;
 

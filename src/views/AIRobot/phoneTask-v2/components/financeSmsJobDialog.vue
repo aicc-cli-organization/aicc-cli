@@ -164,7 +164,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~src/styles/variables.scss";
+@import "src/styles/variables.scss";
 .finance-sms-job_dialog {
   /deep/ .el-dialog__header {
     margin-bottom: 0;

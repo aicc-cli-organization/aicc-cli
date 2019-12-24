@@ -314,7 +314,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~src/styles/variables.scss';
+@import 'src/styles/variables.scss';
 
 .batch-call-status {
   margin-right: 14px;

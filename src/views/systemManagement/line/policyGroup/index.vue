@@ -201,7 +201,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~src/styles/placeholder.scss';
+@import 'src/styles/placeholder.scss';
 
 .policy-group {
   height: 100%;

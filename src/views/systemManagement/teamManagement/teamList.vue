@@ -116,7 +116,7 @@
 </script>
 
 <style lang="scss" scoped>
-  @import '~src/styles/variables.scss';
+  @import 'src/styles/variables.scss';
 
   .team-list {
     width: 338px;

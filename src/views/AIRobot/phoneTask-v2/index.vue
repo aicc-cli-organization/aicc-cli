@@ -157,7 +157,7 @@
 </script>
 
 <style lang="scss" scoped>
-@import "~src/styles/mixin.scss";
+@import "src/styles/mixin.scss";
 
 #phone-task {
   height: 100%;

@@ -140,12 +140,14 @@
           <import-to-task @import="handleImportTask" v-model="taskForImport"></import-to-task>
         </div>
         <div class="f12 right ml10" v-if="hasAccess('crm_dialHistory_downAudio')">
-          <downloader-module
-            :allChecked="allChecked"
-            :multipleSelection="multipleSelection"
-            :paginationParams="paginationParams"
-            :type="type"
-          ></downloader-module>
+          <no-ssr>
+            <downloader-module
+              :allChecked="allChecked"
+              :multipleSelection="multipleSelection"
+              :paginationParams="paginationParams"
+              :type="type"
+            ></downloader-module>
+          </no-ssr>
         </div>
         <el-button type="primary" class="right-item" @click="handleExportCommand" v-if="hasAccess('crm_dialHistory_exportDialHis')">导出通话记录</el-button>
       </div>
@@ -580,8 +582,8 @@
 </script>
 
 <style lang="scss" scoped>
-  @import '~src/styles/variables.scss';
-  @import '~src/styles/extend.scss';
+  @import 'src/styles/variables.scss';
+  @import 'src/styles/extend.scss';
 
   .private-sea {
     height: 100%;

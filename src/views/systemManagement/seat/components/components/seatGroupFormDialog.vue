@@ -516,7 +516,7 @@ export default {
 }
 </script>
 <style lang="scss">
-@import '~src/styles/placeholder.scss';
+@import 'src/styles/placeholder.scss';
 
 .seat-group-dialog {
   .radio-group {

@@ -204,8 +204,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~src/styles/variables.scss';
-@import '~src/styles/placeholder.scss';
+@import 'src/styles/variables.scss';
+@import 'src/styles/placeholder.scss';
 $--color-underline-danger: #ff0000 !default;
 
 .record-item {
@@ -474,7 +474,7 @@ $--color-underline-danger: #ff0000 !default;
 </style>
 
 <style lang="scss">
-@import '~src/styles/variables.scss';
+@import 'src/styles/variables.scss';
 
 .record-choose-emotion-wrap {
   padding: 4px 12px !important;

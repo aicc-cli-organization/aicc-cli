@@ -86,7 +86,7 @@ service.interceptors.response.use(
       })
       if (code === 400) { // 未登录，跳转到登录页
         removeToken()
-        window.$nuxt.$router.push('/login')
+        window.$nuxt.$router.push('/customer-center/login')
       }
       return Promise.reject(data)
     }

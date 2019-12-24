@@ -513,7 +513,7 @@
 </script>
 
 <style lang="scss" scoped>
-@import '~src/styles/placeholder.scss';
+@import 'src/styles/placeholder.scss';
 .el-radio-group {
   .el-radio {
     @extend %ellipsis;
