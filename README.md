@@ -2,21 +2,23 @@
 
 > My luminous Nuxt.js project
 
-## Build Setup
+# 加入crm
 
-``` bash
-# install dependencies
-$ yarn install
+git remote add crm http://gitlab.yiwise.local/ai-call-platform/ai-call-platform-web.git
+git subtree add --prefix=crm crm feature-aicc --squash
 
-# serve with hot reload at localhost:3000
-$ yarn run dev
+# 同步crm最新代码
 
-# build for production and launch server
-$ yarn run build
-$ yarn start
+git subtree pull --prefix=crm crm feature-aicc --squash
 
-# generate static project
-$ yarn run generate
-```
+# 修改crm并commit后，推送到crm分支
 
-For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
+git subtree push --prefix=crm crm feature-aicc --squash
+
+# 加入aicc-components
+
+git remote add aicc-components http://gitlab.yiwise.local/ai-call-platform/front-project/aicc-components.git
+git subtree add --prefix=aicc-components aicc-components develop --squash
+
+同步及推送代码命令参照crm
+
