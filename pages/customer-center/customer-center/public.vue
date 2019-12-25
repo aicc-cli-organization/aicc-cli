@@ -1,15 +1,15 @@
 <template>
   <section class="container">
-    <publicSea />
+    publicSea
   </section>
 </template>
 
 <script>
-import publicSea from '../../../crm/src/views/customer/publicSea/index.vue'
+// import publicSea from '../../../crm/src/views/customer/publicSea/index.vue'
 
 export default {
   components: {
-    publicSea
+    // publicSea
   },
   mounted() {}
 }

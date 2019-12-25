@@ -1,13 +1,14 @@
 <template>
-  <login/>
+  <!-- <login/> -->
+  <span>login</span>
 </template>
 
 <script>
-import login from '../../crm/src/views/login'
+// import login from '../../crm/src/views/login'
 
 export default {
   components: {
-    login
+    // login
   },
   mounted() {}
 }

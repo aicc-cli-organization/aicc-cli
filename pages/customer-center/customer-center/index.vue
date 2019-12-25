@@ -1,15 +1,15 @@
 <template>
   <section class="container">
-    <myCustomer />
+    myCustomer
   </section>
 </template>
 
 <script>
-import myCustomer from '../../../crm/src/views/customer/PrivateSea/index.vue'
+// import myCustomer from '../../../crm/src/views/customer/PrivateSea/index.vue'
 
 export default {
   components: {
-    myCustomer
+    // myCustomer
   },
   mounted() {}
 }
