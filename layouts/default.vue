@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import '../crm/src/main.js'
+// import '../crm/src/main.js'
 import Sidebar from '@/components/Sidebar'
 import { getToken } from '@/utils/auth'
 import { BaseTopNav } from '@aicc/components'
@@ -19,23 +19,21 @@ import { BaseTopNav } from '@aicc/components'
 export default {
   components: { Sidebar, BaseTopNav },
   created() {
-    console.log(this.$route)
-
     const token = getToken()
-
-    console.log('token: ' + token)
 
     if (token) {
       this.$store.dispatch('loadCustomerFields') // 获取客户模块客户自定义字段
     } else {
       if (this.$route.fullPath !== '/customer-center/login') {
-        this.$router.push({name: 'customer-center-login'})
+        this.$router.push({ name: 'customer-center-login' })
       }
     }
   },
   beforeMount() {
-    console.log(this.$router)
-    this.$store.commit('SET_CLIENTHEIGHT', document.documentElement.clientHeight)
+    this.$store.commit(
+      'SET_CLIENTHEIGHT',
+      document.documentElement.clientHeight
+    )
   }
 }
 </script>
