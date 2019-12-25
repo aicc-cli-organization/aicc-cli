@@ -1,0 +1,46 @@
+@import 'src/styles/placeholder.scss';
+
+  .multiple-filter {
+    border-bottom: $--border-base;
+    padding: 0 14px 6px;
+    &.no-border {
+      border-bottom: none;
+    }
+    > .filter-item {
+      display: flex;
+      align-items: center;
+      > .label {
+        flex-shrink: 0;
+        width: 90px;
+        margin-right: 6px;
+        text-align: right;
+      }
+      > .content {
+        flex-shrink: 0;
+      }
+      > .check-all {
+        width: 20px;
+        max-width: 20px;
+      }
+      > .intent-level-tag {
+        margin-right: 15px;
+        width: 141px;
+        min-width: 141px;
+      }
+      /deep/ .el-checkbox {
+        width: 88px;
+        margin-left: 0px;
+        display: inline-flex;
+        &.longer {
+          width: 100px;
+        }
+        .el-checkbox__label {
+          width: 79px;
+          font-size: $--font-size-small;
+          vertical-align: middle;
+          line-height: 14px;
+          @extend %ellipsis;
+        }
+      }
+    }
+  }

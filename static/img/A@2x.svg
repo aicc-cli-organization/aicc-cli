@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 14 14">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        fill-rule: evenodd;
+        filter: url(#filter);
+      }
+    </style>
+    <filter id="filter" x="3422" y="2456" width="14" height="14" filterUnits="userSpaceOnUse">
+      <feFlood result="flood" flood-color="#1890ff"/>
+      <feComposite result="composite" operator="in" in2="SourceGraphic"/>
+      <feBlend result="blend" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+  <path id="ai_icon_kehushuxing_a.svg" class="cls-1" d="M3429,2456a7,7,0,1,1-7,7A6.995,6.995,0,0,1,3429,2456Zm0,1a6,6,0,1,1-6,6A6,6,0,0,1,3429,2457Zm0.68,1.8h-1.17l-3.23,8.47h1.21l0.81-2.31h3.53l0.86,2.31h1.21Zm-2.03,5.2,1.27-3.52a3.583,3.583,0,0,0,.13-0.59h0.03a4.747,4.747,0,0,0,.13.59l1.28,3.52h-2.84Z" transform="translate(-3422 -2456)"/>
+</svg>
