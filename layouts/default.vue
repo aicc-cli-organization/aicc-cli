@@ -2,7 +2,10 @@
   <div>
     <base-top-nav />
     <div class="container">
-      <Sidebar class="side-bar" v-if="$route.path !== '/customer-center/login'" />
+      <Sidebar
+        v-if="$route.path !== '/customer-center/login'"
+        class="side-bar"
+      />
       <div class="app">
         <nuxt/>
       </div>
