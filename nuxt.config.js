@@ -117,7 +117,9 @@ fs.readFile(
       return console.error(err)
     }
 
-    let str = data.toString().replace(/\#\{\$\-\-font\-path\}/g, '/fonts')
+    let str = data
+      .toString()
+      .replace(/\#\{\$\-\-font\-path\}/g, `${baseUrl}/${baseUrl}/fonts`)
 
     fs.writeFile(
       'node_modules/element-ui/packages/theme-chalk/src/icon.scss',
