@@ -1,20 +1,19 @@
 <template>
   <section class="container">
-    myCustomer
+    contactHistory
   </section>
 </template>
 
 <script>
-// import myCustomer from '../../../crm/src/views/customer/PrivateSea/index.vue'
+// import contactHistory from '../../../crm/src/views/customer/contactHistory/index.vue'
 
 export default {
   components: {
-    // myCustomer
+    // contactHistory
   },
   mounted() {}
 }
 </script>
 
 <style>
-
 </style>

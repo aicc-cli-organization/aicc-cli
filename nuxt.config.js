@@ -4,6 +4,9 @@ const webpack = require('webpack')
 const path = require('path')
 var fs = require('fs')
 
+// 子项目基础路径，以下设置则子系统首页路径为：http://localhost:3000/customer-center
+const baseUrl = '/customer-center'
+
 // node提示内存泄漏
 require('events').EventEmitter.prototype._maxListeners = 100
 
@@ -52,7 +55,6 @@ const pollyfillStr = `
     if (err) {
       return console.error(err)
     }
-    // console.log('异步读取文件数据: ' + data.toString())
     let str = data
       .toString()
       .replace(/@\//g, resolve('crm/src').replace(/\\/g, '/') + '/')
@@ -64,7 +66,7 @@ const pollyfillStr = `
       if (err) {
         return console.error(err)
       }
-      console.log('数据写入成功！')
+      console.log('window兼容对象写入成功！')
     })
   })
 })
@@ -76,23 +78,36 @@ fs.readdir('node_modules/element-ui/lib/theme-chalk/fonts', function(
   if (err) {
     return console.error(err)
   }
-  files.forEach(function(file) {
-    console.log(file)
-    fs.readFile(
-      'node_modules/element-ui/lib/theme-chalk/fonts/' + file,
-      function(err, data) {
-        if (err) {
-          return console.error(err)
-        }
-
-        fs.writeFile('./static/fonts/' + file, data, function(err) {
-          if (err) {
-            return console.error(err)
-          }
-          console.log('字体写入成功！')
-        })
+  fs.rmdir(`./static${baseUrl}/fonts`, { recursive: true }, function(err) {
+    if (err) {
+      return console.error(err)
+    }
+    console.log('字体目录删除成功。')
+    fs.mkdir(`./static${baseUrl}/fonts`, { recursive: true }, function(err) {
+      if (err) {
+        return console.error(err)
       }
-    )
+      console.log('字体目录创建成功。')
+      files.forEach(function(file) {
+        fs.readFile(
+          'node_modules/element-ui/lib/theme-chalk/fonts/' + file,
+          function(err, data) {
+            if (err) {
+              return console.error(err)
+            }
+
+            fs.writeFile(`./static${baseUrl}/fonts/` + file, data, function(
+              err
+            ) {
+              if (err) {
+                return console.error(err)
+              }
+              console.log('字体写入成功！')
+            })
+          }
+        )
+      })
+    })
   })
 })
 fs.readFile(
@@ -101,7 +116,7 @@ fs.readFile(
     if (err) {
       return console.error(err)
     }
-    // console.log('异步读取文件数据: ' + data.toString())
+
     let str = data.toString().replace(/\#\{\$\-\-font\-path\}/g, '/fonts')
 
     fs.writeFile(
@@ -111,7 +126,7 @@ fs.readFile(
         if (err) {
           return console.error(err)
         }
-        console.log('数据写入成功！')
+        console.log('字体引用修改成功！')
       }
     )
   }
@@ -219,7 +234,7 @@ module.exports = {
   },
 
   router: {
-    base: '/',
+    base: baseUrl,
     middleware: 'auth'
   },
 
