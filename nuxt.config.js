@@ -78,12 +78,12 @@ fs.readdir('node_modules/element-ui/lib/theme-chalk/fonts', function(
   if (err) {
     return console.error(err)
   }
-  fs.rmdir(`./static${baseUrl}/fonts`, { recursive: true }, function(err) {
+  fs.rmdir(`./static/fonts`, { recursive: true }, function(err) {
     if (err) {
       return console.error(err)
     }
     console.log('字体目录删除成功。')
-    fs.mkdir(`./static${baseUrl}/fonts`, { recursive: true }, function(err) {
+    fs.mkdir(`./static/fonts`, { recursive: true }, function(err) {
       if (err) {
         return console.error(err)
       }
@@ -96,9 +96,7 @@ fs.readdir('node_modules/element-ui/lib/theme-chalk/fonts', function(
               return console.error(err)
             }
 
-            fs.writeFile(`./static${baseUrl}/fonts/` + file, data, function(
-              err
-            ) {
+            fs.writeFile(`./static/fonts/` + file, data, function(err) {
               if (err) {
                 return console.error(err)
               }
@@ -119,7 +117,7 @@ fs.readFile(
 
     let str = data
       .toString()
-      .replace(/\#\{\$\-\-font\-path\}/g, `${baseUrl}/${baseUrl}/fonts`)
+      .replace(/\#\{\$\-\-font\-path\}/g, `${baseUrl}/fonts`)
 
     fs.writeFile(
       'node_modules/element-ui/packages/theme-chalk/src/icon.scss',
@@ -238,6 +236,10 @@ module.exports = {
   router: {
     base: baseUrl,
     middleware: 'auth'
+  },
+
+  generate: {
+    dir: `dist/${baseUrl}`
   },
 
   /*
